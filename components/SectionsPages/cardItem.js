@@ -1,13 +1,15 @@
 import Slider from "react-slick";
 import React, { useRef, useState } from "react";
 import { TiLocationOutline } from "react-icons/ti";
-import { GrNext } from "react-icons/gr";
-import { motion } from "framer-motion";
+import { AiOutlineHome } from "react-icons/ai";
+import { SiHomeassistantcommunitystore } from "react-icons/si";
 import { FiEdit3 } from "react-icons/fi";
 import ReadMoreReadLess from "../Tools/ReadMoreReadLess";
 import { useTranslation } from "react-i18next";
 import Rating from "../Tools/Rating";
 import Image from "next/image";
+import ListBox from "./ListBox";
+
 export default function CardItem({ businesses }) {
   const [t, il18n] = useTranslation();
   const [active, setActive] = useState(1);
@@ -16,8 +18,8 @@ export default function CardItem({ businesses }) {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    slidesToShow: 3,
+    slidesToScroll: 3,
     initialSlide: 0,
     pauseOnHover: true,
     responsive: [
@@ -74,8 +76,8 @@ export default function CardItem({ businesses }) {
               <li className=" inline mr-2">
                 <Rating value={businesses.rating} />
               </li>
-              <li className=" inline font-medium text-[#17505C]">
-                ({businesses.reviewsNo}){" "}
+              <li className=" inline font-medium  text-[#17505C]">
+                ( <span className=" font-normal">{businesses.reviewsNo} Reviews</span> ){" "}
                 {businesses.rating.toString().substr(0, 3)}
               </li>
             </ul>
@@ -89,44 +91,34 @@ export default function CardItem({ businesses }) {
                 <TiLocationOutline className=" text-2xl text-main" />
               </div>
               <div className=" relative col-span-full mt-4">
-                <motion.div
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.8 }}
-                  onClick={() => sliderRef.current.slickNext()}
-                  className=" absolute transition-all hover:bg-main text-main hover:text-white bg-white shadow cursor-pointer  p-3 rounded-full top-3 right-1 z-50"
-                >
-                  <GrNext />
-                </motion.div>
-                <Slider {...settings} ref={sliderRef}>
-                  {businesses.services.map(({ id, nameEn }) => (
-                    <div className="" key={id}>
-                      <p className="mt-3 bg-slate-100 hover:text-white font-medium cursor-pointer hover:bg-main  text-[#17505C] rounded-lg transition-all mr-2 p-2">
-                        {nameEn}
-                      </p>
-                    </div>
-                  ))}
-                </Slider>
+                <ListBox data={businesses.services} />
               </div>
               <div className=" col-span-full mt-1">
                 <div className=" grid grid-cols-6">
                   <div className=" col-span-5">
-                    <div className=" grid grid-cols-3">
+                    <Slider {...settings} ref={sliderRef}>
                       {[
                         { id: 1, time: "8:00 am" },
                         { id: 2, time: "8:30 am" },
                         { id: 3, time: "8:30 am" },
+                        { id: 4, time: "8:30 am" },
+                        { id: 5, time: "8:30 am" },
+                        { id: 6, time: "8:30 am" },
                       ].map(({ id, time }) => (
-                        <div className=" col-span-1" key={id}>
-                          <p className="mt-3 bg-slate-100 hover:text-white font-medium text-sm cursor-pointer hover:bg-main  text-[#17505C] rounded-lg transition-all mr-2 p-2">
+                        <div className="" key={id}>
+                          <p className="mt-3 bg-slate-100 text-sm hover:text-white font-medium cursor-pointer hover:bg-main  text-[#17505C] rounded-lg transition-all mr-2 p-2">
                             {time}
                           </p>
                         </div>
                       ))}
-                    </div>
+                    </Slider>
                   </div>
                   <div className=" col-span-1">
                     <div className=" col-span-1">
-                      <p className="mt-3 bg-slate-100 hover:text-white text-sm font-medium cursor-pointer hover:bg-main  text-[#17505C] rounded-lg transition-all mr-2 p-2">
+                      <p
+                        onClick={() => sliderRef.current.slickNext()}
+                        className="mt-3 bg-slate-100 hover:text-white text-sm font-medium cursor-pointer hover:bg-main  text-[#17505C] rounded-lg transition-all text-center  p-2"
+                      >
                         +5
                       </p>
                     </div>
@@ -158,7 +150,7 @@ export default function CardItem({ businesses }) {
         </div>
       )}
       {businesses.type === "FREELANCER" && (
-        <div className="border rounded-md overflow-hidden bg-white pb-1">
+        <div className="border rounded-md overflow-hidden bg-white">
           <Image
             src={businesses.businessImages[0].imageUrl}
             objectFit="fill"
@@ -170,14 +162,17 @@ export default function CardItem({ businesses }) {
           <div className=" p-3">
             <div className=" grid grid-cols-12">
               <div className=" col-span-10">
-              <ReadMoreReadLess className={"font-bold text-xl inline"} max={20}>
-              {/* {businesses.nameEn} */}
-              {il18n.language === "en"
-                ? businesses.nameEn
-                : il18n.language === "es"
-                ? businesses.nameEs
-                : ""}
-            </ReadMoreReadLess>
+                <ReadMoreReadLess
+                  className={"font-bold text-xl inline"}
+                  max={20}
+                >
+                  {/* {businesses.nameEn} */}
+                  {il18n.language === "en"
+                    ? businesses.nameEn
+                    : il18n.language === "es"
+                    ? businesses.nameEs
+                    : ""}
+                </ReadMoreReadLess>
 
                 <ul>
                   <li className=" inline mr-2">
@@ -190,7 +185,12 @@ export default function CardItem({ businesses }) {
                 </ul>
               </div>
               <div className=" col-span-2 my-auto">
-                <Image alt="" src={"/assets/Rectangle 9 (7).png"} width={50} height={50} />
+                <Image
+                  alt=""
+                  src={"/assets/Rectangle 9 (7).png"}
+                  width={50}
+                  height={50}
+                />
               </div>
             </div>
 
@@ -198,9 +198,9 @@ export default function CardItem({ businesses }) {
               <div className=" col-span-full  mb-2">
                 <div className=" grid grid-cols-2 gap-x-1">
                   {[
-                    { id: 1, name: "At Home Service" },
-                    { id: 2, name: "Provider Studio" },
-                  ].map(({ id, name }) => (
+                    { id: 1, name: "Home Studio",icon:<AiOutlineHome className="  text-lg"/> },
+                    { id: 2, name: "Salon Suite",icon:<SiHomeassistantcommunitystore className="  text-lg"/> },
+                  ].map(({ id, name,icon }) => (
                     <div
                       key={id}
                       onClick={() => setActive(`${id}`)}
@@ -210,7 +210,14 @@ export default function CardItem({ businesses }) {
                           : ` col-span-1 bg-slate-100 rounded-lg p-2 font-medium text-sm cursor-pointer`
                       }
                     >
-                      <button>{name}</button>
+                      <div className=" grid grid-cols-12 gap-x-6">
+                        <div className=" col-span-1">
+                          {icon}
+                        </div>
+                        <div className=" col-span-11">
+                          <button>{name}</button>
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -272,7 +279,7 @@ export default function CardItem({ businesses }) {
                 </div>
               </div>
             </div>
-            <div className=" grid grid-cols-12 mt-4">
+            <div className=" grid grid-cols-12 mt-1">
               <div className=" col-span-5 my-auto">
                 <p className="text-slate-400 font-medium italic">
                   Booked x today

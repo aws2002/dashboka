@@ -4,25 +4,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useState, useRef } from "react";
 import { TbArrowsHorizontal } from "react-icons/tb";
 import { useTranslation } from "react-i18next";
-import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
 export default function BokaTransformation() {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-  });
-  const animation = useAnimation();
-  useEffect(() => {
-    if (inView) {
-      animation.start({
-        y: 0,
-        transition: { type: "spring", duration: 1, bounce: 0.3 },
-      });
-    } else {
-      animation.start({
-        y: 200,
-      });
-    }
-  });
   const [t, il18n] = useTranslation();
   const {
     data: caseStudies,
@@ -71,8 +53,6 @@ export default function BokaTransformation() {
   };
   return (
     <motion.section
-      ref={ref}
-      animate={animation}
       className="boka--transformation mb-24 bg-[#FFFAF8] py-20 px-4"
     >
       <div className=" container">
@@ -109,14 +89,15 @@ export default function BokaTransformation() {
                     },
                   ].map(({ id, img, titel, className, textColor }) => (
                     <div className=" col-span-1 relative ml-1" key={id}>
-                      <Image
+                      <picture>
+                      <img
                         src={img}
                         alt=""
-                        objectFit="cover"
                         width={442}
                         height={417}
                         className="pointer-events-none"
                       />
+                      </picture>
 
                       <div
                         className={className}

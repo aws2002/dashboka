@@ -1,26 +1,9 @@
 import Link from "next/link";
 import Slider from "react-slick";
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { GrNext, GrPrevious } from "react-icons/gr";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 export default function MoreBusiness({ children }) {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-  });
-  const animation = useAnimation();
-  useEffect(() => {
-    if (inView) {
-      animation.start({
-        y: 0,
-        transition: { type: "spring", duration: 1, bounce: 0.3 },
-      });
-    } else {
-      animation.start({
-        y: 200,
-      });
-    }
-  });
   const sliderRef = useRef(null);
   const settings = {
     dots: false,
@@ -59,8 +42,6 @@ export default function MoreBusiness({ children }) {
   };
   return (
     <motion.section
-      ref={ref}
-      animate={animation}
       className="bxploring--businesses px-4 my-20"
     >
       <div className=" container">

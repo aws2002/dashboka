@@ -29,6 +29,7 @@ export default function Home({ businesses, brands }) {
           React.Children.toArray(<CardItem businesses={businesses} />)
         )}
       </SpecialOffer>
+      
       <PopularBusinesses>
         {businesses.data.map((businesses) =>
           React.Children.toArray(<CardItem businesses={businesses} />)

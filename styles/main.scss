@@ -186,6 +186,12 @@ body {
     background: #FF914D;
   }
 }
-.line-height-1{
+
+.line-height-1 {
   line-height: 140% !important;
+}
+
+.slick-prev,
+.slick-next {
+  display: none !important;
 }

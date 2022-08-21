@@ -1,29 +1,9 @@
 import Image from "next/image";
 import { GrLinkNext } from "react-icons/gr";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
+import { motion } from "framer-motion";
 export default function PopularCategory() {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-  });
-  const animation = useAnimation();
-  useEffect(() => {
-    if (inView) {
-      animation.start({
-        y: 0,
-        transition: { type: "spring", duration: 1, bounce: 0.3 },
-      });
-    } else {
-      animation.start({
-        y: 200,
-      });
-    }
-  });
   return (
     <motion.section
-      ref={ref}
-      animate={animation}
       className="popularCategory px-5"
     >
       <div className=" container">

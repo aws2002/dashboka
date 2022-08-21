@@ -1,29 +1,12 @@
 import Image from "next/image";
 import Slider from "react-slick";
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import Rating from "../Tools/Rating";
 import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import useFetch from "../Hooks/useFetch";
-import { useInView } from "react-intersection-observer";
 import ReadMoreReadLess from "../Tools/ReadMoreReadLess";
 export default function CustomersSays() {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-  });
-  const animation = useAnimation();
-  useEffect(() => {
-    if (inView) {
-      animation.start({
-        y: 0,
-        transition: { type: "spring", duration: 1, bounce: 0.3 },
-      });
-    } else {
-      animation.start({
-        y: 200,
-      });
-    }
-  });
   const {
     data: customers,
     loading,
@@ -72,8 +55,6 @@ export default function CustomersSays() {
   };
   return (
     <motion.section
-      ref={ref}
-      animate={animation}
       className="customers--says my-10 relative"
     >
       <div className=" container">
