@@ -16,7 +16,6 @@ import {
   ViewGridIcon,
   XIcon,
 } from "@heroicons/react/outline";
-import { ChevronDownIcon } from "@heroicons/react/solid";
 import Image from "next/image";
 import NavCommunication from "../SectionsPages/navCommunication";
 const solutions = [

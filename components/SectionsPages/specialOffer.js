@@ -65,13 +65,13 @@ export default function SpecialOffer({ children }) {
       className="special--offer my-20 bg-[#FFFAF8] py-16 px-4"
     >
       <div className=" container">
-        <div className=" grid gap-4 grid-cols-12 bg-[#FFE9DB] pt-6 px-8 rounded-lg">
+        <div className=" grid gap-4 grid-cols-12 bg-[#FFE9DB] lg:pt-6 lg:pb-0 py-6 px-8 rounded-lg">
           <div className="col-span-3 pb-3">
             <Image
               src={"/assets/Group (1).png"}
-              width={200}
+              width={220}
               alt=""
-              height={200}
+              height={220}
             />
           </div>
           <div className=" col-span-6 my-auto">
@@ -85,9 +85,9 @@ export default function SpecialOffer({ children }) {
           <div className=" col-span-3 flex justify-end">
             <Image
               src={"/assets/mother 1.png"}
-              width={200}
+              width={220}
               alt=""
-              height={200}
+              height={220}
             />
           </div>
         </div>

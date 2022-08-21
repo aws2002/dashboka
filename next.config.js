@@ -1,10 +1,5 @@
-/** @type {import('next').NextConfig} */
 module.exports = {
-  reactStrictMode: true,
-  swcMinify: true,
-  experimental: {
-    images: {
-      allowFutureImage: true,
-    },
+  images: {
+    domains: ['dev-boka-files.s3.amazonaws.com'],
   },
 }

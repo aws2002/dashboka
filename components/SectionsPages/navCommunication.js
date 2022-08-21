@@ -33,7 +33,7 @@ export default function NavCommunication() {
           <div className=" lg:col-span-1 col-span-full flex items-center">
             <ul>
               {navCommunication.map(({ id, href, icon, text }) => (
-                <li key={id} className=" inline-block mr-4 transition-all hover:text-main">
+                <li key={id} className=" inline-block mr-4 transition-all text-color_1 hover:text-main">
                   <a href={href}>
                     {icon}
                     <p className="inline">{text}</p>

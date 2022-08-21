@@ -10,7 +10,7 @@ export default function ReadMoreReadLess({ children, className, max }) {
         {isReadMoreShow ? children : children.substr(0, max)}
       </p>
       {children.length > max ? (
-        <button onClick={toggle} className=" font-medium text-2xl">
+        <button onClick={toggle} className=" font-medium text-lg">
           ...
         </button>
       ) : (

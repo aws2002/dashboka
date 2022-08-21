@@ -28,7 +28,7 @@ export default function HeroSections() {
             </h1>
             <form className="mt-10 grid grid-cols-12 gap-4">
               <div className=" lg:col-span-7 col-span-full bg-white px-3 py-2 rounded-lg">
-                <div className=" grid grid-cols-4 gap-5">
+                <div className=" grid grid-cols-4">
                   <div className="col-span-1">
                     {[
                       {
@@ -49,7 +49,10 @@ export default function HeroSections() {
                           type="checkbox"
                           className="h-4 w-4 border-gray-300 rounded"
                         />
-                        <label htmlFor={id} className="ml-2  font-medium">
+                        <label
+                          htmlFor={id}
+                          className="ml-2 text-sm font-medium"
+                        >
                           {titel}
                         </label>
                       </div>
@@ -116,7 +119,7 @@ export default function HeroSections() {
                       className=" col-span-1 flex items-center pl-1 border-l-2"
                       key={id}
                     >
-                      <span className="font-medium">
+                      <span className="font-medium text-sm">
                         {icon}
                         {input}
                       </span>
@@ -126,25 +129,28 @@ export default function HeroSections() {
               </div>
               <div className=" lg:col-span-5 col-span-full">
                 <div className=" grid grid-cols-12 gap-4">
-                  <div className="col-span-9 rounded-lg">
+                  <div className="col-span-8 rounded-lg">
                     <div className="relative">
-                      <BsSearch className=" absolute top-5 left-3 text-3xl text-color_1" />
+                      <BsSearch className=" absolute top-4 left-3 text-3xl text-color_1" />
                       <input
                         type={"text"}
                         placeholder="Search"
-                        className="font-medium w-full py-6 bg-color_22 pl-11  focus:ring-4  rounded-lg focus:outline-none focus:border-main focus:ring-main"
+                        className="font-medium w-full py-5 pl-11 focus:ring-4  rounded-lg focus:outline-none focus:border-main focus:ring-main"
                       />
                     </div>
                   </div>
-                  <motion.div whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }} className=" bg-main col-span-3 flex justify-center rounded-lg text-white font-semibold">
-                    <button >Search</button>
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className=" bg-main col-span-4 flex justify-center rounded-lg text-white font-semibold"
+                  >
+                    <button>Search</button>
                   </motion.div>
                 </div>
               </div>
             </form>
             <div className=" col-span-full mt-4">
-              <p className=" text-center underline underline-offset-4 text-white text-lg letter-spacing-2">
+              <p className=" text-center underline underline-offset-4 text-white text-sm letter-spacing-2">
                 It looks like you&apos;re in Dhaka Division. Not correct?
               </p>{" "}
             </div>

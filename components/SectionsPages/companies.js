@@ -24,7 +24,7 @@ export default function Companies({children}) {
     <div ref={ref}>
       <motion.section
         animate={animation}
-        className=" relative bg-[#E3ECEE] lg:py-[74px] py-[53px] overflow-hidden my-20"
+        className=" relative bg-[#E3ECEE] lg:py-[70px] py-[40px] overflow-hidden my-20"
       >
         <div className=" absolute top-0">
           <Image width={280} height={200} src="/assets/Union.png" alt="" />

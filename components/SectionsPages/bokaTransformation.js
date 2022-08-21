@@ -81,13 +81,12 @@ export default function BokaTransformation() {
             <h3 className=" font-bold text-4xl">Boka Transformation</h3>
           </div>
           <div className=" col-span-6 text-end">
-            <button className=" text-main font-semibold border border-main px-3 py-2 rounded-lg hover:bg-main transition-all hover:text-white">
+            <button className=" text-main font-semibold border border-main px-4 py-2 rounded-lg hover:bg-main transition-all hover:text-white">
               Book Now
             </button>
           </div>
-          <div className=" lg:col-span-7 col-span-full mt-8">
+          <div className=" lg:col-span-8 col-span-full mt-8">
             <div className="px-4 overflow-hidden">
-              <h1></h1>
               <div
                 ref={imageContainer}
                 className="max-w-3xl relative select-none group"
@@ -110,15 +109,14 @@ export default function BokaTransformation() {
                     },
                   ].map(({ id, img, titel, className, textColor }) => (
                     <div className=" col-span-1 relative ml-1" key={id}>
-                      <picture>
-                        <img
-                          src={img}
-                          alt=""
-                          width={442}
-                          height={417}
-                          className="pointer-events-none"
-                        />
-                      </picture>
+                      <Image
+                        src={img}
+                        alt=""
+                        objectFit="cover"
+                        width={442}
+                        height={417}
+                        className="pointer-events-none"
+                      />
 
                       <div
                         className={className}
@@ -158,8 +156,8 @@ export default function BokaTransformation() {
               </div>
             </div>
           </div>
-          <div className=" lg:col-span-5 col-span-full px-20 my-auto">
-            <p className=" text-[#17505C] font-medium">
+          <div className=" lg:col-span-4 col-span-full px-6 my-auto">
+            <p className=" text-[#17505C] font-medium text-lg">
               ”
               {il18n.language === "en"
                 ? caseStudies?.data[0].descEn
@@ -168,21 +166,21 @@ export default function BokaTransformation() {
                 : ""}
               ”
             </p>
-            <div className=" grid-cols-12 grid gap-x-3 mt-4">
-              <div className=" col-span-4">
+            <div className=" grid-cols-12 grid mt-4">
+              <div className="col-span-3">
                 <Image
-                  width={70}
-                  height={70}
+                  width={60}
+                  height={60}
                   src="/assets/Rectangle 9.png"
                   alt=""
                 />
               </div>
-              <div className=" col-span-8 my-auto">
-                <h4 className=" font-extrabold text-xl">Shoukri Kattan</h4>
-                <span className=" text-slate-400">Hair Specialist @boka</span>
+              <div className=" col-span-9 my-auto">
+                <h4 className=" font-extrabold">Shoukri Kattan</h4>
+                <span className=" text-slate-400 text-xs">Hair Specialist @boka</span>
               </div>
               <div className=" col-span-full mt-8">
-                <span className=" text-main text-xl font-semibold">
+                <span className=" text-main font-semibold">
                   Book Shoukri for $49
                 </span>
               </div>

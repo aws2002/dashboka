@@ -4,6 +4,7 @@ import { GrNext, GrPrevious } from "react-icons/gr";
 import useFetch from "../Hooks/useFetch";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Image from "next/image";
 export default function Services() {
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -79,7 +80,7 @@ export default function Services() {
         <motion.div
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.8 }}
-          className=" z-50 absolute lg:left-28 left-2 top-10 cursor-pointer"
+          className=" z-50 absolute lg:left-28 left-2 top-8 cursor-pointer"
           onClick={() => sliderRef.current.slickPrev()}
         >
           <GrPrevious className=" text-3xl" />
@@ -87,7 +88,7 @@ export default function Services() {
         <motion.div
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.8 }}
-          className=" absolute lg:right-28 z-50 right-2 top-10 cursor-pointer"
+          className=" absolute lg:right-28 z-50 right-2 top-8 cursor-pointer"
           onClick={() => sliderRef.current.slickNext()}
         >
           <GrNext className=" text-3xl" />
@@ -96,9 +97,7 @@ export default function Services() {
           {businessCategories?.data.map(({ id, nameEn, iconUrl }) => (
             <div className="px-3" key={id}>
               <div className=" overflow-hidden rounded-full flex justify-center">
-                <picture>
-                  <img width={100} height={100} src={iconUrl} alt="" />
-                </picture>
+                <Image width={86} height={86} src={iconUrl} alt="" />
               </div>
               <p className=" text-center mt-3">{nameEn}</p>
             </div>

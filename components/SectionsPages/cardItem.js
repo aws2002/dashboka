@@ -7,6 +7,7 @@ import { FiEdit3 } from "react-icons/fi";
 import ReadMoreReadLess from "../Tools/ReadMoreReadLess";
 import { useTranslation } from "react-i18next";
 import Rating from "../Tools/Rating";
+import Image from "next/image";
 export default function CardItem({ businesses }) {
   const [t, il18n] = useTranslation();
   const [active, setActive] = useState(1);
@@ -51,15 +52,15 @@ export default function CardItem({ businesses }) {
     <div className="pr-4">
       {businesses.type === "BUSINESS" && (
         <div className="border rounded-md overflow-hidden bg-white">
-          <div className=" h-36 ">
-            <picture>
-              <img
-                src={businesses.businessImages[0].imageUrl}
-                className=" w-full h-full"
-                alt=""
-              />
-            </picture>
-          </div>
+          <Image
+            src={businesses.businessImages[0].imageUrl}
+            objectFit="fill"
+            width={300}
+            height={150}
+            layout="responsive"
+            alt=""
+          />
+
           <div className=" p-3">
             <ReadMoreReadLess className={"font-bold text-xl inline"} max={20}>
               {/* {businesses.nameEn} */}
@@ -158,28 +159,41 @@ export default function CardItem({ businesses }) {
       )}
       {businesses.type === "FREELANCER" && (
         <div className="border rounded-md overflow-hidden bg-white pb-1">
-          <div className=" h-36 ">
-            <picture>
-              <img
-                src={businesses.businessImages[0].imageUrl}
-                className=" w-full h-full"
-                alt=""
-              />
-            </picture>
-          </div>
+          <Image
+            src={businesses.businessImages[0].imageUrl}
+            objectFit="fill"
+            width={300}
+            height={150}
+            layout="responsive"
+            alt=""
+          />
           <div className=" p-3">
-            <h2 className=" font-bold text-xl">
-              Hair X Pression Unisex Hair..
-            </h2>
-            <ul>
-              <li className=" inline mr-2">
-                <Rating value={businesses.rating} />
-              </li>
-              <li className=" inline font-medium text-[#17505C]">
-                ({businesses.reviewsNo}){" "}
-                {businesses.rating.toString().substr(0, 3)}
-              </li>
-            </ul>
+            <div className=" grid grid-cols-12">
+              <div className=" col-span-10">
+              <ReadMoreReadLess className={"font-bold text-xl inline"} max={20}>
+              {/* {businesses.nameEn} */}
+              {il18n.language === "en"
+                ? businesses.nameEn
+                : il18n.language === "es"
+                ? businesses.nameEs
+                : ""}
+            </ReadMoreReadLess>
+
+                <ul>
+                  <li className=" inline mr-2">
+                    <Rating value={businesses.rating} />
+                  </li>
+                  <li className=" inline font-medium text-[#17505C]">
+                    ({businesses.reviewsNo}){" "}
+                    {businesses.rating.toString().substr(0, 3)}
+                  </li>
+                </ul>
+              </div>
+              <div className=" col-span-2 my-auto">
+                <Image alt="" src={"/assets/Rectangle 9 (7).png"} width={50} height={50} />
+              </div>
+            </div>
+
             <div className=" grid grid-cols-12 mt-3">
               <div className=" col-span-full  mb-2">
                 <div className=" grid grid-cols-2 gap-x-1">

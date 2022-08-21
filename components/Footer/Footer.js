@@ -6,8 +6,8 @@ export default function Footer() {
   return (
     <footer className="py-12 px-4 bg-color_3">
       <div className=" container">
-        <div className=" grid grid-cols-12 gap-x-12">
-          <div className="lg:col-span-3 col-span-12 mb-7">
+        <div className=" grid grid-cols-12 lg:gap-x-12 gap-x-6">
+          <div className="lg:col-span-3 col-span-full mb-7">
             <a href="#">
               <Image
                 src={"/assets/logoscv.svg"}
@@ -23,7 +23,7 @@ export default function Footer() {
           </div>
           <div className="lg:col-span-2 col-span-6 pt-5">
             <ul>
-              <li className=" font-semibold text-xl">Discover</li>
+              <li className=" font-semibold text-lg">Discover</li>
               {data.footerLinks.discover.map(({ id, name, href }) => (
                 <li
                   className="mt-4 text-[#6B7C80] transition-all hover:text-main"
@@ -40,7 +40,7 @@ export default function Footer() {
             <div className=" grid grid-cols-1">
               <div className=" col-span-full pt-5">
                 <ul>
-                  <li className=" font-semibold text-xl">Opentable</li>
+                  <li className=" font-semibold text-lg">Opentable</li>
                   {data.footerLinks.opentable.map(({ id, name, href }) => (
                     <li
                       className="mt-4 text-[#6B7C80] transition-all hover:text-main "
@@ -55,7 +55,7 @@ export default function Footer() {
               </div>
               <div className=" col-span-full pt-5">
                 <ul>
-                  <li className=" font-semibold text-xl">More</li>
+                  <li className=" font-semibold text-lg">More</li>
                   {data.footerLinks.more.map(({ id, name, href }) => (
                     <li
                       className="mt-4 text-[#6B7C80] transition-all hover:text-main"
@@ -72,7 +72,7 @@ export default function Footer() {
           </div>
           <div className="lg:col-span-2 col-span-6 pt-5">
             <ul>
-              <li className=" font-semibold text-xl">Our Sites</li>
+              <li className=" font-semibold text-lg">Our Sites</li>
               {data.footerLinks.ourSites.map(({ id, name, href }) => (
                 <li
                   className="mt-4 text-[#6B7C80] transition-all hover:text-main"
@@ -89,7 +89,7 @@ export default function Footer() {
             <div className=" grid-cols-1 grid">
               <div className=" col-span-full pt-5">
                 <ul>
-                  <li className=" font-semibold text-xl">More</li>
+                  <li className=" font-semibold text-lg">More</li>
                   {data.footerLinks.businesses.map(({ id, name, href }) => (
                     <li
                       className="mt-4 text-[#6B7C80] transition-all hover:text-main"
@@ -104,7 +104,7 @@ export default function Footer() {
               </div>
               <div className=" col-span-full pt-5">
                 <ul>
-                  <li className=" font-semibold text-xl">More</li>
+                  <li className=" font-semibold text-lg">Join Us On</li>
 
                   <div className=" grid grid-cols-4 gap-4">
                     {data.footerLinks.social.map(({ id, icon, href }) => (
@@ -151,7 +151,7 @@ export default function Footer() {
             </p>
           </div>
           <div className="lg:col-span-8 col-span-full lg:justify-end justify-center flex mt-5">
-            <Image src={"/assets/paymet.png"} width="222" height={34} alt="" />
+            <Image src={"/assets/paymet.png"} width={222} height={34} alt="" />
           </div>
         </div>
       </div>
