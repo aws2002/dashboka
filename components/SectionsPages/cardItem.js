@@ -13,6 +13,7 @@ import ListBox from "./ListBox";
 export default function CardItem({ businesses }) {
   const [t, il18n] = useTranslation();
   const [active, setActive] = useState(1);
+  const [selectItem, setSelectItem] = useState(0);
   const sliderRef = useRef(null);
   const settings = {
     dots: false,
@@ -77,8 +78,11 @@ export default function CardItem({ businesses }) {
                 <Rating value={businesses.rating} />
               </li>
               <li className=" inline font-medium  text-[#17505C]">
-                ( <span className=" font-normal">{businesses.reviewsNo} Reviews</span> ){" "}
-                {businesses.rating.toString().substr(0, 3)}
+                ({" "}
+                <span className=" font-normal">
+                  {businesses.reviewsNo} Reviews
+                </span>{" "}
+                ) {businesses.rating.toString().substr(0, 3)}
               </li>
             </ul>
             <div className=" grid grid-cols-12 mt-3">
@@ -198,9 +202,19 @@ export default function CardItem({ businesses }) {
               <div className=" col-span-full  mb-2">
                 <div className=" grid grid-cols-2 gap-x-1">
                   {[
-                    { id: 1, name: "Home Studio",icon:<AiOutlineHome className="  text-lg"/> },
-                    { id: 2, name: "Salon Suite",icon:<SiHomeassistantcommunitystore className="  text-lg"/> },
-                  ].map(({ id, name,icon }) => (
+                    {
+                      id: 1,
+                      name: "Home Studio",
+                      icon: <AiOutlineHome className="  text-lg" />,
+                    },
+                    {
+                      id: 2,
+                      name: "Salon Suite",
+                      icon: (
+                        <SiHomeassistantcommunitystore className="  text-lg" />
+                      ),
+                    },
+                  ].map(({ id, name, icon }) => (
                     <div
                       key={id}
                       onClick={() => setActive(`${id}`)}
@@ -211,9 +225,7 @@ export default function CardItem({ businesses }) {
                       }
                     >
                       <div className=" grid grid-cols-12 gap-x-6">
-                        <div className=" col-span-1">
-                          {icon}
-                        </div>
+                        <div className=" col-span-1">{icon}</div>
                         <div className=" col-span-11">
                           <button>{name}</button>
                         </div>
@@ -250,28 +262,32 @@ export default function CardItem({ businesses }) {
               )}
 
               <div className=" col-span-full mt-1">
-                <div className=" bg-main text-center py-2 rounded-lg text-white transition-all hover:bg-white hover:text-main border border-main cursor-pointer">
-                  <button>Manicure</button>
-                </div>
+                <ListBox data={businesses.services} />
                 <div className=" grid grid-cols-6">
-                  <div className=" col-span-5">
-                    <div className=" grid grid-cols-3">
+                <div className=" col-span-5">
+                    <Slider {...settings} ref={sliderRef}>
                       {[
                         { id: 1, time: "8:00 am" },
                         { id: 2, time: "8:30 am" },
                         { id: 3, time: "8:30 am" },
+                        { id: 4, time: "8:30 am" },
+                        { id: 5, time: "8:30 am" },
+                        { id: 6, time: "8:30 am" },
                       ].map(({ id, time }) => (
-                        <div className=" col-span-1" key={id}>
-                          <p className="mt-3 bg-slate-100 hover:text-white font-medium text-sm cursor-pointer hover:bg-main  text-[#17505C] rounded-lg transition-all mr-2 p-2">
+                        <div className="" key={id}>
+                          <p className="mt-3 bg-slate-100 text-sm hover:text-white font-medium cursor-pointer hover:bg-main  text-[#17505C] rounded-lg transition-all mr-2 p-2">
                             {time}
                           </p>
                         </div>
                       ))}
-                    </div>
+                    </Slider>
                   </div>
                   <div className=" col-span-1">
                     <div className=" col-span-1">
-                      <p className="mt-3 bg-slate-100 hover:text-white text-sm font-medium cursor-pointer hover:bg-main  text-[#17505C] rounded-lg transition-all mr-2 p-2">
+                      <p
+                        onClick={() => sliderRef.current.slickNext()}
+                        className="mt-3 bg-slate-100 hover:text-white text-sm font-medium cursor-pointer hover:bg-main  text-[#17505C] rounded-lg transition-all text-center  p-2"
+                      >
                         +5
                       </p>
                     </div>
