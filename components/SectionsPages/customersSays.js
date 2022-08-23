@@ -55,7 +55,7 @@ export default function CustomersSays() {
   };
   return (
     <motion.section
-      className="customers--says my-10 relative"
+      className="customers--says my-10 relative px-4"
     >
       <div className=" container">
         <motion.div
@@ -74,7 +74,7 @@ export default function CustomersSays() {
         >
           <GrFormNextLink className=" text-3xl" />
         </motion.div>
-        <h2 className=" text-center text-4xl font-extrabold">
+        <h2 className=" text-center lg:text-4xl text-3xl font-extrabold">
           Our happy customers say about us
         </h2>
         <Slider {...settings} className=" mt-10" ref={sliderRef}>

@@ -186,7 +186,14 @@ body {
     background: #FF914D;
   }
 }
+.card ::-webkit-scrollbar {
+  width: 2px;
+  background: #fff;
 
+  &-thumb {
+    background: #FF914D;
+  }
+}
 .line-height-1 {
   line-height: 140% !important;
 }

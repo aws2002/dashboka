@@ -48,7 +48,7 @@ export default function PopularBusinesses({ children }) {
       <div className=" container">
         <div className=" grid grid-cols-12">
           <div className="lg:col-span-10 col-span-full">
-            <h2 className="font-bold text-4xl">Popular Businesses</h2>
+            <h2 className="font-bold lg:text-4xl text-2xl">Popular Businesses</h2>
           </div>
           <div className=" lg:col-span-2 text-end col-span-full lg:mt-0 mt-4">
             <div className=" grid grid-cols-3">

@@ -48,7 +48,7 @@ export default function FeaturedBusinesses({ children }) {
       <div className=" container">
         <div className=" grid grid-cols-12">
           <div className="lg:col-span-10 col-span-full">
-            <h2 className="font-bold text-4xl">Featured Businesses</h2>
+            <h2 className="font-bold lg:text-4xl text-2xl">Featured Businesses</h2>
           </div>
           <div className=" lg:col-span-2 lg:mt-0 col-span-full mt-4 text-end">
             <div className=" grid grid-cols-3">

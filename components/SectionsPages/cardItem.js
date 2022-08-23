@@ -11,6 +11,7 @@ import Image from "next/image";
 import ListBox from "./ListBox";
 
 export default function CardItem({ businesses }) {
+  const [selectedTime, setselectedTime] = React.useState(null);
   const [t, il18n] = useTranslation();
   const [active, setActive] = useState(1);
   const [selectItem, setSelectItem] = useState(0);
@@ -27,8 +28,8 @@ export default function CardItem({ businesses }) {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
+          slidesToShow: 3,
+          slidesToScroll: 3,
           infinite: true,
           dots: false,
         },
@@ -36,23 +37,23 @@ export default function CardItem({ businesses }) {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
+          slidesToShow: 3,
+          slidesToScroll: 3,
           initialSlide: 1,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
+          slidesToShow: 3,
+          slidesToScroll: 3,
         },
       },
     ],
   };
 
   return (
-    <div className="pr-4">
+    <div className="pr-4 card">
       {businesses.type === "BUSINESS" && (
         <div className="border rounded-md overflow-hidden bg-white">
           <Image
@@ -109,8 +110,18 @@ export default function CardItem({ businesses }) {
                         { id: 5, time: "8:30 am" },
                         { id: 6, time: "8:30 am" },
                       ].map(({ id, time }) => (
-                        <div className="" key={id}>
-                          <p className="mt-3 bg-slate-100 text-sm hover:text-white font-medium cursor-pointer hover:bg-main  text-[#17505C] rounded-lg transition-all mr-2 p-2">
+                        <div
+                          className=""
+                          key={id}
+                          onClick={() => setselectedTime(id)}
+                        >
+                          <p
+                            className={
+                              selectedTime == id
+                                ? ` mt-3 bg-main text-sm text-white hover:text-white font-medium cursor-pointer hover:bg-main  rounded-lg transition-all mr-2 p-2`
+                                : ` mt-3 bg-slate-100 text-sm hover:text-white font-medium cursor-pointer hover:bg-main  text-[#17505C] rounded-lg transition-all mr-2 p-2`
+                            }
+                          >
                             {time}
                           </p>
                         </div>
@@ -264,7 +275,7 @@ export default function CardItem({ businesses }) {
               <div className=" col-span-full mt-1">
                 <ListBox data={businesses.services} />
                 <div className=" grid grid-cols-6">
-                <div className=" col-span-5">
+                  <div className=" col-span-5">
                     <Slider {...settings} ref={sliderRef}>
                       {[
                         { id: 1, time: "8:00 am" },
@@ -274,8 +285,18 @@ export default function CardItem({ businesses }) {
                         { id: 5, time: "8:30 am" },
                         { id: 6, time: "8:30 am" },
                       ].map(({ id, time }) => (
-                        <div className="" key={id}>
-                          <p className="mt-3 bg-slate-100 text-sm hover:text-white font-medium cursor-pointer hover:bg-main  text-[#17505C] rounded-lg transition-all mr-2 p-2">
+                        <div
+                          className=""
+                          key={id}
+                          onClick={() => setselectedTime(id)}
+                        >
+                          <p
+                            className={
+                              selectedTime == id
+                                ? ` mt-3 bg-main text-sm text-white hover:text-white font-medium cursor-pointer hover:bg-main  rounded-lg transition-all mr-2 p-2`
+                                : ` mt-3 bg-slate-100 text-sm hover:text-white font-medium cursor-pointer hover:bg-main  text-[#17505C] rounded-lg transition-all mr-2 p-2`
+                            }
+                          >
                             {time}
                           </p>
                         </div>

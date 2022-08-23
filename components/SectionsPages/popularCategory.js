@@ -9,7 +9,7 @@ export default function PopularCategory() {
       <div className=" container">
         <div className=" grid grid-cols-2">
           <div className=" col-span-1">
-            <h3 className=" font-bold text-4xl">Popular Category</h3>
+            <h3 className=" font-bold lg:text-4xl text-2xl">Popular Category</h3>
           </div>
           <div className=" col-span-1 text-end">
             <button className=" text-main font-semibold ">

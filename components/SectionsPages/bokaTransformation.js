@@ -58,7 +58,7 @@ export default function BokaTransformation() {
       <div className=" container">
         <div className=" grid grid-cols-12 gap-4">
           <div className=" col-span-6">
-            <h3 className=" font-bold text-4xl">Boka Transformation</h3>
+            <h3 className=" font-bold lg:text-4xl text-2xl">Boka Transformation</h3>
           </div>
           <div className=" col-span-6 text-end">
             <button className=" text-main font-semibold border border-main px-4 py-2 rounded-lg hover:bg-main transition-all hover:text-white">
@@ -78,14 +78,14 @@ export default function BokaTransformation() {
                       img: caseStudies?.data[0].imageBeforeUrl,
                       textColor: "text-white",
                       titel: "Before",
-                      className: "absolute lg:bottom-7 bottom-4 left-4",
+                      className: "absolute lg:bottom-7 bottom-4 left-3",
                     },
                     {
                       id: 2,
                       img: caseStudies?.data[0].imageAfterUrl,
                       textColor: "text-black",
                       titel: "After",
-                      className: "absolute lg:top-7 top-2 right-4",
+                      className: "absolute lg:top-7 top-2 right-3",
                     },
                   ].map(({ id, img, titel, className, textColor }) => (
                     <div className=" col-span-1 relative ml-1" key={id}>
@@ -108,7 +108,7 @@ export default function BokaTransformation() {
                         }}
                       >
                         <span
-                          className={`${textColor} lg:text-4xl text-3xl font-extrabold`}
+                          className={`${textColor} lg:text-4xl text-2xl font-extrabold`}
                         >
                           {titel}
                         </span>

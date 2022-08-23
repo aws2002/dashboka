@@ -2,26 +2,9 @@ import React, { useRef, useEffect } from "react";
 import Slider from "react-slick";
 import { GrNext, GrPrevious } from "react-icons/gr";
 import useFetch from "../Hooks/useFetch";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 import Image from "next/image";
 export default function Services() {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-  });
-  const animation = useAnimation();
-  useEffect(() => {
-    if (inView) {
-      animation.start({
-        y: 0,
-        transition: { type: "spring", duration: 1, bounce: 0.3 },
-      });
-    } else {
-      animation.start({
-        y: 200,
-      });
-    }
-  });
   const {
     data: businessCategories,
     loading,
@@ -71,11 +54,7 @@ export default function Services() {
     ],
   };
   return (
-    <motion.section
-      className="services my-24 relative"
-      ref={ref}
-      animate={animation}
-    >
+    <section className="services my-24 relative">
       <div className=" container">
         <motion.div
           whileHover={{ scale: 1.2 }}
@@ -104,6 +83,6 @@ export default function Services() {
           ))}
         </Slider>
       </div>
-    </motion.section>
+    </section>
   );
 }
