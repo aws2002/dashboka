@@ -55,7 +55,7 @@ export default function CardItem({ businesses }) {
   const [selected, setSelected] = useState(businesses.services[0]);
   const data = businesses.services;
   return (
-    <div className="pr-4 card">
+    <div className="lg:pr-4 card">
       {businesses.type === "BUSINESS" && (
         <div className="border rounded-md overflow-hidden bg-white">
           <Image
