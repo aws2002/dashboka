@@ -54,7 +54,7 @@ export default function Services() {
     ],
   };
   return (
-    <section className="services my-24 relative">
+    <section className="services my-14 relative">
       <div className=" container">
         <motion.div
           whileHover={{ scale: 1.2 }}
