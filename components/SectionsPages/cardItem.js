@@ -1,5 +1,5 @@
 import Slider from "react-slick";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, Fragment } from "react";
 import { TiLocationOutline } from "react-icons/ti";
 import { AiOutlineHome } from "react-icons/ai";
 import { SiHomeassistantcommunitystore } from "react-icons/si";
@@ -9,12 +9,13 @@ import { useTranslation } from "react-i18next";
 import Rating from "../Tools/Rating";
 import Image from "next/image";
 import ListBox from "./ListBox";
-
+import { Listbox, Transition } from "@headlessui/react";
+import { CheckIcon } from "@heroicons/react/solid";
+import { IoIosArrowDown } from "react-icons/io";
 export default function CardItem({ businesses }) {
-  const [selectedTime, setselectedTime] = React.useState(null);
+  const [selectedTime, setselectedTime] = useState(null);
   const [t, il18n] = useTranslation();
   const [active, setActive] = useState(1);
-  const [selectItem, setSelectItem] = useState(0);
   const sliderRef = useRef(null);
   const settings = {
     dots: false,
@@ -51,7 +52,8 @@ export default function CardItem({ businesses }) {
       },
     ],
   };
-
+  const [selected, setSelected] = useState(businesses.services[0]);
+  const data = businesses.services;
   return (
     <div className="pr-4 card">
       {businesses.type === "BUSINESS" && (
@@ -96,7 +98,64 @@ export default function CardItem({ businesses }) {
                 <TiLocationOutline className=" text-2xl text-main" />
               </div>
               <div className=" relative col-span-full mt-4">
-                <ListBox data={businesses.services} />
+                {/* <ListBox data={businesses.services} /> */}
+                <Listbox value={selected} onChange={setSelected}>
+                  <div className="relative mt-1 z-50">
+                    <Listbox.Button className="cursor-pointer relative w-full rounded-lg border border-main bg-[#ffdec9] py-2 pl-3 pr-10 text-left focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+                      <span className="block truncate capitalize font-medium">
+                        {selected.nameEn}
+                      </span>
+                      <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                        <IoIosArrowDown
+                          aria-hidden="true"
+                          className="h-5 w-5"
+                        />
+                      </span>
+                    </Listbox.Button>
+                    <Transition
+                      as={Fragment}
+                      leave="transition ease-in duration-100"
+                      leaveFrom="opacity-100"
+                      leaveTo="opacity-0"
+                    >
+                      <Listbox.Options className=" overflow-y-scroll absolute mt-1 max-h-28 w-full rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                        {data.map((person, personIdx) => (
+                          <Listbox.Option
+                            key={personIdx}
+                            className={({ active }) =>
+                              `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                                active
+                                  ? "bg-amber-100 text-amber-900"
+                                  : "text-gray-900"
+                              }`
+                            }
+                            value={person}
+                          >
+                            {({ selected }) => (
+                              <>
+                                <span
+                                  className={`block truncate ${
+                                    selected ? "font-medium" : "font-normal"
+                                  }`}
+                                >
+                                  {person.nameEn}
+                                </span>
+                                {selected ? (
+                                  <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
+                                    <CheckIcon
+                                      className="h-5 w-5"
+                                      aria-hidden="true"
+                                    />
+                                  </span>
+                                ) : null}
+                              </>
+                            )}
+                          </Listbox.Option>
+                        ))}
+                      </Listbox.Options>
+                    </Transition>
+                  </div>
+                </Listbox>
               </div>
               <div className=" col-span-full mt-1">
                 <div className=" grid grid-cols-6">
@@ -150,10 +209,11 @@ export default function CardItem({ businesses }) {
               <div className=" col-span-7 ml-auto">
                 <span className="text-center block text-xl text-slate-500 line-through">
                   $31.99
+                  
                 </span>
                 <ul className=" mt-1">
                   <li className=" inline mr-2 font-extrabold text-xl">
-                    $29.92
+                    ${selected.price}
                   </li>
                   <li className=" inline text-lg bg-[#EB5757] rounded-lg text-white px-2 py-1">
                     20%

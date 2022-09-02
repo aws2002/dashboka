@@ -70,7 +70,7 @@ export default function SpecialOffer({ children }) {
             />
           </div>
         </div>
-        <section className="bxploring--businesses px-4 my-20">
+        <section className="bxploring--businesses my-20">
           <div className=" container">
             <div className=" grid grid-cols-12">
               <div className="lg:col-span-10 col-span-full">
