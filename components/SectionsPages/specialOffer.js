@@ -11,15 +11,15 @@ export default function SpecialOffer({ children }) {
     infinite: true,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToScroll: 4,
     initialSlide: 0,
     pauseOnHover: true,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToShow: 4,
+          slidesToScroll: 4,
           infinite: true,
           dots: false,
         },
@@ -50,6 +50,7 @@ export default function SpecialOffer({ children }) {
               src={"/assets/Group (1).png"}
               width={220}
               alt=""
+              priority
               height={220}
             />
           </div>
@@ -66,6 +67,7 @@ export default function SpecialOffer({ children }) {
               src={"/assets/mother 1.png"}
               width={220}
               alt=""
+              priority
               height={220}
             />
           </div>

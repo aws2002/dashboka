@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Slider from "react-slick";
 import React, { useRef } from "react";
 import Rating from "../Tools/Rating";
@@ -23,7 +22,7 @@ export default function CustomersSays() {
     speed: 500,
     autoplay: true,
     slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToScroll: 4,
     initialSlide: 0,
     pauseOnHover: true,
     responsive: [
@@ -31,7 +30,7 @@ export default function CustomersSays() {
         breakpoint: 1024,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 1,
+          slidesToScroll: 4,
           infinite: true,
           dots: false,
         },

@@ -11,13 +11,6 @@ body {
   overflow-x: hidden;
 }
 
-.img-hero {
-  background-image: url(../public/assets/heroSec.png);
-  height: 83vh;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .letter-spacing-1 {
   letter-spacing: 8px;
 }
@@ -26,7 +19,6 @@ body {
   letter-spacing: 2px;
 }
 
-/* From uiverse.io by @Z-C-Code */
 @keyframes square-animation {
   0% {
     left: 0;
@@ -201,4 +193,11 @@ body {
 .slick-prev,
 .slick-next {
   display: none !important;
+}
+.bgWrap {
+  position: absolute;
+  height: 92%;
+  width: 100vw;
+  overflow: hidden;
+  z-index: -1;
 }

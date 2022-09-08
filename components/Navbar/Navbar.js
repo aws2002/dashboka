@@ -95,9 +95,6 @@ const recentPosts = [
   { id: 3, name: "Improve your customer experience", href: "#" },
 ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default function Navbar() {
   const [navActive, setnavActive] = useState(false);
@@ -119,7 +116,7 @@ export default function Navbar() {
       <Popover
         className={
           navActive
-            ? "bg-white shadow-md  w-full z-50 sticky -top-1 px-4"
+            ? "bg-white shadow-md  w-full  sticky -top-1 px-4 z-[1000]"
             : "relative bg-white shadow-md px-4"
         }
       >
@@ -130,6 +127,7 @@ export default function Navbar() {
                 <Image
                   src={"/assets/logoscv.svg"}
                   width={200}
+                  priority
                   alt=""
                   height={40}
                 />
@@ -187,6 +185,7 @@ export default function Navbar() {
                       src={"/assets/logoscv.svg"}
                       width={200}
                       alt=""
+                      priority
                       height={50}
                     />
                   

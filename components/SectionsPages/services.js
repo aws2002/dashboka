@@ -4,6 +4,7 @@ import { GrNext, GrPrevious } from "react-icons/gr";
 import useFetch from "../Hooks/useFetch";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import ImgBlurLazy from "../Tools/ImgBlurLazy";
 export default function Services() {
   const {
     data: businessCategories,
@@ -23,15 +24,15 @@ export default function Services() {
     speed: 500,
     autoplay: true,
     slidesToShow: 8,
-    slidesToScroll: 1,
+    slidesToScroll: 8,
     initialSlide: 0,
     pauseOnHover: true,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 5,
-          slidesToScroll: 1,
+          slidesToShow: 8,
+          slidesToScroll: 8,
           infinite: true,
           dots: false,
         },
@@ -39,16 +40,16 @@ export default function Services() {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
+          slidesToShow: 4,
+          slidesToScroll: 4,
           initialSlide: 1,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToShow: 3,
+          slidesToScroll: 3,
         },
       },
     ],
@@ -76,7 +77,7 @@ export default function Services() {
           {businessCategories?.data.map(({ id, nameEn, iconUrl }) => (
             <div className="px-3" key={id}>
               <div className=" overflow-hidden rounded-full flex justify-center">
-                <Image width={86} height={86} src={iconUrl} alt="" />
+                <ImgBlurLazy src={iconUrl} width={86} height={86} />
               </div>
               <p className=" text-center mt-3">{nameEn}</p>
             </div>

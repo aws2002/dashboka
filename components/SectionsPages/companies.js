@@ -6,7 +6,7 @@ export default function Companies({ children }) {
     <div>
       <motion.section className=" relative bg-[#E3ECEE] lg:py-[70px] py-[40px] overflow-hidden my-20">
         <div className=" absolute top-0">
-          <Image width={280} height={200} src="/assets/Union.png" alt="" />
+          <Image width={280} height={200} src="/assets/Union.png" priority alt="" />
         </div>
         <div className=" container z-50 relative">
           <div className=" grid lg:grid-cols-5 grid-cols-6">{children}</div>

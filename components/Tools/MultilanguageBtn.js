@@ -2,37 +2,18 @@
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
-import cookies from "js-cookie";
 import React from "react";
-import { useTranslation } from "react-i18next";
 import ReactCountryFlag from "react-country-flag";
-
-const languages = [
-  {
-    code: "en",
-    name: "English",
-    country_code: "gb",
-  },
-  {
-    code: "es",
-    name: "Spain",
-    country_code: "es",
-  },
-];
+import { useRouter } from "next/router";
+import Link from "next/link";
 export default function MultilanguageBtn() {
-  const [t, il18n] = useTranslation();
-  const currentLanguageCode = cookies.get("i18next") || "en";
-  const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
-  React.useEffect(() => {
-    console.log("Setting page stuff");
-    document.body.dir = currentLanguage.dir || "ltr";
-  }, [currentLanguage, t]);
+  const router = useRouter();
   return (
     <div className="text-right inline w-full">
       <Menu as="div" className="relative inline-block text-left z-50">
         <div>
           <Menu.Button className="inline-flex w-full justify-center rounded-md transition-all hover:text-main px-4 py-2 text-sm hover:bg-opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-            <span className=" uppercase">{il18n.language}</span>
+            <span className=" uppercase">{router.locale}</span>
             <ChevronDownIcon
               className="-mr-1 ml-2 h-5 w-5"
               aria-hidden="true"
@@ -50,28 +31,29 @@ export default function MultilanguageBtn() {
         >
           <Menu.Items className="origin-top-right absolute px-1 right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="py-1">
-              {languages.map((item) => (
-                <Menu.Item key={item.code}>
-                  <div
-                    onClick={() => {
-                      il18n.changeLanguage(item.code);
-                    }}
+              {router.locales.map((locale) => (
+                <Menu.Item key={locale}>
+                  <Link
+                    href={router.asPath}
+                    locale={locale}
                     className={
                       "group cursor-pointer flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-color_10 font-semibold"
                     }
                   >
+                    <a className=" block my-2">
                     <ReactCountryFlag
-                      countryCode={item.country_code}
+                      countryCode={locale}
                       svg
                       style={{
                         width: "2em",
                         height: "2em",
                       }}
                       className="mx-2"
-                      title={item.country_code}
+                      title={locale}
                     />
-                    {item.name}
-                  </div>
+                    {locale}
+                    </a>
+                  </Link>
                 </Menu.Item>
               ))}
             </div>

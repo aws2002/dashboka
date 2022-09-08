@@ -6,18 +6,23 @@ import { BsSearch } from "react-icons/bs";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { useState } from "react";
+import Image from "next/image";
+
 export default function HeroSections() {
   const [val, setVal] = useState("Now");
   return (
-    <section className="img-hero">
-      <motion.div
-        className=" container"
-        animate={{ opacity: 1, scale: 1 }}
-        initial={{ opacity: 0, scale: 0 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-        layout
-      >
+    <section className=" mb-40">
+      <div className={"bgWrap"}>
+        <Image
+          alt="Mountains"
+          src="/assets/heroSec.png"
+          layout="fill"
+          objectFit="fill"
+          priority
+          quality={100}
+        />
+      </div>
+      <div className="container">
         <div className="flex justify-center items-center lg:pt-0 pt-10 lg:h-[80vh] lg:px-36 px-5">
           <div>
             <p className=" text-white text-center font-medium  mb-5 letter-spacing-1">
@@ -156,7 +161,7 @@ export default function HeroSections() {
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

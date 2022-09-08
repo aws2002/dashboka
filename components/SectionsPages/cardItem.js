@@ -63,18 +63,14 @@ export default function CardItem({ businesses }) {
             objectFit="fill"
             width={300}
             height={150}
+            priority
             layout="responsive"
             alt=""
           />
 
           <div className=" p-3">
             <ReadMoreReadLess className={"font-bold text-xl inline"} max={20}>
-              {/* {businesses.nameEn} */}
-              {il18n.language === "en"
-                ? businesses.nameEn
-                : il18n.language === "es"
-                ? businesses.nameEs
-                : ""}
+              {businesses.nameEn}
             </ReadMoreReadLess>
             <ul>
               <li className=" inline mr-2">
@@ -230,6 +226,7 @@ export default function CardItem({ businesses }) {
             src={businesses.businessImages[0].imageUrl}
             objectFit="fill"
             width={300}
+            priority
             height={150}
             layout="responsive"
             alt=""
@@ -241,12 +238,8 @@ export default function CardItem({ businesses }) {
                   className={"font-bold text-xl inline"}
                   max={20}
                 >
-                  {/* {businesses.nameEn} */}
-                  {il18n.language === "en"
-                    ? businesses.nameEn
-                    : il18n.language === "es"
-                    ? businesses.nameEs
-                    : ""}
+                  {businesses.nameEn}
+                  
                 </ReadMoreReadLess>
 
                 <ul>
@@ -264,6 +257,7 @@ export default function CardItem({ businesses }) {
                   alt=""
                   src={"/assets/Rectangle 9 (7).png"}
                   width={50}
+                  priority
                   height={50}
                 />
               </div>
